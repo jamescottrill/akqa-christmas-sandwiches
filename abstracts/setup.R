@@ -1,0 +1,10 @@
+library(odbc)
+library(shiny)
+library(shinydashboard)
+library(DBI)
+library(dplyr)
+con <- dbConnect(RMySQL::MySQL(), group="sandwiches")
+users<-dbGetQuery(con,"SELECT id,name FROM user;")
+sandwiches<-dbGetQuery(con,"SELECT id,name,brand,price,temperature,format FROM sandwich;")
+reviews<-dbGetQuery(con,"SELECT reviewerId,sandwichId,flavour,christmasness,structure,valueformoney,comments FROM review;")
+
