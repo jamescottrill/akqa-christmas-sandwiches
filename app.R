@@ -6,14 +6,20 @@ library(DBI)
 library(dplyr)
 library(RMySQL)
 
-con <- dbConnect(RMySQL::MySQL(), group="sandwiches")
+con <- dbConnect(RMySQL::MySQL(),
+                 user=Sys.getenv('SQL_USER'),
+                 password=Sys.getenv('SQL_PASSWORD'),
+                 dbname="sandwiches")
 users<-dbGetQuery(con,"SELECT id,name FROM user;")
 sandwiches<-dbGetQuery(con,"SELECT id,name,brand,price,temperature,format FROM sandwich;")
 reviews<-dbGetQuery(con,"SELECT reviewerId,sandwichId,flavour,christmasness,structure,valueformoney,comments FROM review;")
 dbDisconnect(con)
 
 updateFrames<-function(){
-    con <- dbConnect(RMySQL::MySQL(), group="sandwiches")
+    con <- dbConnect(RMySQL::MySQL(),
+                     user=Sys.getenv('SQL_USER'),
+                     password=Sys.getenv('SQL_PASSWORD'),
+                     dbname="sandwiches")
     users<-dbGetQuery(con,"SELECT id,name FROM user;")
     sandwiches<-dbGetQuery(con,"SELECT id,name,brand,price,temperature,format FROM sandwich;")
     reviews<-dbGetQuery(con,"SELECT reviewerId,sandwichId,flavour,christmasness,structure,valueformoney,comments FROM review;")
