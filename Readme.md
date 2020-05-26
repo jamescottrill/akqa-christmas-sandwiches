@@ -1,10 +1,8 @@
-#AKQA Christmas Sandwiches
+# AKQA Christmas Sandwiches
 
 For the last two years, the London AKQA office has informally rated the Christmas lunch offerings of the various eateries in the area surrounding the office. The results of these were originally stored in a Google Sheet, however as the rating system developed, a database seemed a more appropriate solution, and Shiny offered a perfect way both for users to enter data and to visualise the results.
 
-A 
-
-##Setup
+## Setup
 The code included in this repo should be sufficient to run this app on your own shiny server. A demo SQL database has been included for demonstration purposes. To load this, you'll first need to create a new database in your mysql server:
 ```sql
 CREATE DATABASE sandwiches;
